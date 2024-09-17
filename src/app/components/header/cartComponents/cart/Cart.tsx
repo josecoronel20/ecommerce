@@ -1,18 +1,26 @@
 "use client";
-import { IconCart } from "@/app/utils/icons";
+import { IconCart } from "../../../../utils/icons";
 import React from "react";
-import { hoverPointer, styleButtonWhite } from "@/app/utils/styles";
-import { useToggle } from "@/app/hooks/useToggle";
-import { ContextCart } from "@/app/context/ContextCart";
+import { hoverPointer, styleButtonWhite } from "../../../../utils/styles";
+import { useToggle } from "../../../../hooks/useToggle";
+import { ContextCart } from "../../../../context/ContextCart";
 import { useContext } from "react";
-import Quantity from "@/app/components/header/cartComponents/Quantity";
-import Delete from "@/app/components/header/cartComponents/Delete";
-import PriceIndividual from "@/app/components/header/cartComponents/PriceIndividual";
-import PriceTotal from "@/app/components/header/cartComponents/PriceTotal";
+import Quantity from "../Quantity";
+import Delete from "../Delete";
+import PriceIndividual from "../PriceIndividual";
+import PriceTotal from "../PriceTotal";
 import Link from "next/link";
+import { CartContextType } from "../../../../utils/types";
 
 export default function Cart() {
-  const { cartItems, handlerQuantity, handlerDelete } = useContext(ContextCart);
+
+  const context = useContext(ContextCart)
+
+  if (!context) {
+    throw new Error("ContextCart must be used within a ContextCart.Provider");
+  }
+
+  const { cartItems, handlerQuantity, handlerDelete } = context;
 
   const { isToggleOpen, handlerToggle } = useToggle();
 

@@ -1,4 +1,4 @@
-import { hoverPointer } from "@/app/utils/styles";
+import { hoverPointer } from "../../../utils/styles";
 import react from "react";
 
 export default function Quantity({ product, handlerQuantity}) {

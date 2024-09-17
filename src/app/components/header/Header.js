@@ -1,9 +1,9 @@
 import React from "react";
-import Logo from "./Logo";
+import Logo from "./logo/Logo";
 import SearchBar from "./SearchBar";
-import Cart from "./cartComponents/Cart";
+import Cart from "./cartComponents/cart/Cart";
 import Link from "next/link";
-import MenuNav from "./MenuNav"
+import MenuNav from "./menuNav/MenuNav"
 
 export default function Header() {
   return (

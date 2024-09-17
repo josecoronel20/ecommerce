@@ -1,10 +1,15 @@
 "use client"
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, ReactNode } from "react";
+import { ContextProductstype,Products } from "../utils/types";
 
-export const ContextProducts = createContext();
+export const ContextProducts = createContext<ContextProductstype | undefined>(undefined);
 
-export function ProductsProvider({ children }) {
-  const categoryList = [
+interface ProductsProviderProps{
+  children:ReactNode;
+}
+
+export function ProductsProvider({ children }: ProductsProviderProps) {
+  const categoryList:string[] = [
     "beauty",
     "fragrances",
     "mens-shirts",
@@ -18,9 +23,9 @@ export function ProductsProvider({ children }) {
     "womens-watches",
   ];
 
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [products, setProducts] = useState<Products[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -38,7 +43,7 @@ export function ProductsProvider({ children }) {
 
         const allProducts = responses.flatMap((response) => response.products);
         setProducts(allProducts);
-      } catch (error) {
+      } catch (error:any) {
         setError(error.message);
       } finally {
         setLoading(false);
