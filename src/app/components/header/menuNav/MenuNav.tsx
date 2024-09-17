@@ -1,16 +1,21 @@
 "use client";
 import React from "react";
-import { hoverPointer } from "@/app/utils/styles";
-import { IconMenu } from "@/app/utils/icons";
+import { hoverPointer } from "../../../utils/styles";
 import Link from "next/link";
-import { useToggle } from "@/app/hooks/useToggle";
+import { useToggle } from "../../../hooks/useToggle";
+import { Bars3Icon, BeakerIcon } from "@heroicons/react/24/solid";
+
+interface LiProps {
+  title: string;
+  url: string;
+}
 
 export default function MenuNav() {
   //custom hook para toggle
   const { isToggleOpen, handlerToggle } = useToggle();
 
   //componetizacion de li
-  const Li = ({ title, url }) => {
+  const Li: React.FC<LiProps> = ({ title, url }) => {
     return (
       <li className={`${hoverPointer}`} onClick={handlerToggle}>
         <Link href={url}>{title}</Link>
@@ -21,12 +26,14 @@ export default function MenuNav() {
   return (
     <>
       <div>
-        <div
-          className={`${hoverPointer} relative ${isToggleOpen === true && "z-40"}`}
+        <button
+          className={`${hoverPointer} relative ${
+            isToggleOpen === true && "z-40"
+          }`}
           onClick={handlerToggle}
         >
-          <IconMenu />
-        </div>
+          <Bars3Icon className="size-6 text-blue-500" />
+        </button>
         <nav
           className={`${isToggleOpen === false ? "-translate-y-full" : ""} 
             

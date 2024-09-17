@@ -1,10 +1,15 @@
 "use client";
-import { createContext, useState } from "react";
+import { createContext, useState, ReactNode } from "react";
+import { CartItems, CartContextType, HandlerQuantityParams  } from "../utils/types";
 
-export const ContextCart = createContext();
+export const ContextCart = createContext<CartContextType | undefined>(undefined);
 
-export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([
+interface CartProviderProps{
+  children:ReactNode;
+}
+
+export function CartProvider({ children }: CartProviderProps) {
+  const [cartItems, setCartItems] = useState<CartItems[]>([
     {
       id: 1,
       quantity: 1,
@@ -247,17 +252,19 @@ export function CartProvider({ children }) {
     },
   ]);
 
-  const addToCart = (product) => {
+  const addToCart = (product: CartItems) => {
     product.quantity = 1;
     setCartItems([...cartItems, product]);
   };
 
-  const handlerDelete = (productId) => {
+  const handlerDelete = (productId:number) => {
     setCartItems(cartItems.filter((product) => product.id !== productId));
   };
 
-  const handlerQuantity = ({ productId, operation }) => {
+  const handlerQuantity = ({ productId, operation }: HandlerQuantityParams ) => {
     const itemFound = cartItems.find((item) => item.id === productId);
+
+    if (!itemFound) return;
 
     const updatedItem =
       operation === "suma"

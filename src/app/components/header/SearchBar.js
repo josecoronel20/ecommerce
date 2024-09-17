@@ -1,5 +1,5 @@
 "use client";
-import { IconSearch } from "@/app/utils/icons";
+import { IconSearch } from "../../utils/icons";
 import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
