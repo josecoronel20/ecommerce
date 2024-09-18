@@ -5,12 +5,11 @@ import { hoverPointer, styleButtonWhite } from "../../../../utils/styles";
 import { useToggle } from "../../../../hooks/useToggle";
 import { ContextCart } from "../../../../context/ContextCart";
 import { useContext } from "react";
-import Quantity from "../Quantity";
-import Delete from "../Delete";
-import PriceIndividual from "../PriceIndividual";
-import PriceTotal from "../PriceTotal";
+import Quantity from "../quantity/Quantity";
+import Delete from "../delete/Delete";
+import PriceIndividual from "../priceIndividual/PriceIndividual";
+import PriceTotal from "../priceTotal/PriceTotal";
 import Link from "next/link";
-import { CartContextType } from "../../../../utils/types";
 
 export default function Cart() {
 

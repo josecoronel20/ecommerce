@@ -1,7 +1,8 @@
 import react from "react";
+import { CartItems } from "../../../../utils/types";
 
-export default function PriceTotal({cartItems}) {
-const total = cartItems.reduce((acc, item) => {
+export default function PriceTotal({cartItems} : {cartItems:CartItems[]}) {
+const total = cartItems.reduce((acc:number, item:CartItems) => {
     return acc + item.price * item.quantity
 },0).toFixed(2)
 

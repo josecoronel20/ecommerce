@@ -42,10 +42,10 @@ export interface CartItems {
     thumbnail: string;
   }
 
-  export interface HandlerQuantityParams {
-    productId: number;
-    operation: "suma" | "resta"
-  }
+  export type HandlerQuantityParams = 
+    ({productId, operation}:{productId: number;
+    operation: "suma" | "resta"}) => void
+  
 
   export type HandlerDeleteParams = (productId: number) => void;
 
@@ -54,7 +54,7 @@ export interface CartItems {
     cartItems: CartItems[];
     addToCart: (product: CartItems) => void;
     handlerDelete: HandlerDeleteParams;
-    handlerQuantity: (params: HandlerQuantityParams ) => void;
+    handlerQuantity: HandlerQuantityParams;
   }
   
   //context products types
