@@ -261,7 +261,7 @@ export function CartProvider({ children }: CartProviderProps) {
     setCartItems(cartItems.filter((product) => product.id !== productId));
   };
 
-  const handlerQuantity = ({ productId, operation }: HandlerQuantityParams ) => {
+  const handlerQuantity = ({ productId, operation }: {productId: number, operation: "suma" | "resta"} ) => {
     const itemFound = cartItems.find((item) => item.id === productId);
 
     if (!itemFound) return;

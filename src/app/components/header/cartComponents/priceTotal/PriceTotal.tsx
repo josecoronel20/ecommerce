@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { CartItems } from "../../../../utils/types";
 
 export default function PriceTotal({cartItems} : {cartItems:CartItems[]}) {
