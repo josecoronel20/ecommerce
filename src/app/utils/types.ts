@@ -60,7 +60,6 @@ export interface CartItems {
   //context products types
   export interface Products {
     id: number;
-    quantity: number;
     title: string;
     description: string;
     category: string;
