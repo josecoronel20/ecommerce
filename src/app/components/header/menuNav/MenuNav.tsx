@@ -3,7 +3,7 @@ import React from "react";
 import { hoverPointer } from "../../../utils/styles";
 import Link from "next/link";
 import { useToggle } from "../../../hooks/useToggle";
-import { Bars3Icon, BeakerIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon} from "@heroicons/react/24/solid";
 
 interface LiProps {
   title: string;
@@ -25,14 +25,14 @@ export default function MenuNav() {
 
   return (
     <>
-      <div>
+      <div className="flex items-center">
         <button
           className={`${hoverPointer} relative ${
             isToggleOpen === true && "z-40"
           }`}
           onClick={handlerToggle}
         >
-          <Bars3Icon className="size-6 text-blue-500" />
+          <Bars3Icon className={`size-6 text-colorDark1`} />
         </button>
         <nav
           className={`${isToggleOpen === false ? "-translate-y-full" : ""} 
