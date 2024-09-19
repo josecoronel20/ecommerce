@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "./logo/Logo";
+import Logo from "./cartComponents/logo/Logo";
 import SearchBar from "./SearchBar";
 import Cart from "./cartComponents/cart/Cart";
 import Link from "next/link";

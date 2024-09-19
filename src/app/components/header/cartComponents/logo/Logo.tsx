@@ -1,4 +1,4 @@
-import { hoverPointer } from "../../../utils/styles";
+import { hoverPointer } from "../../../../utils/styles";
 import React from "react";
 
 const Logo = () => {
