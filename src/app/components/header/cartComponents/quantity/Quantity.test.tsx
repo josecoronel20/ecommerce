@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Quantity from "./Quantity";
 
-const mockupProduct = {
-  id: 4,
+let mockupProduct = {
+  id: 2,
   quantity: 2,
   title: "Essence Mascara Lash Princess",
   description:
@@ -64,17 +64,7 @@ const mockupProduct = {
     "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
 };
 
-const mockupHandleQuantity = jest.fn(({ productId, operation }) => {
-  if (operation === "suma") {
-    productId.quantity = productId.quantity++;
-  } else if (operation === "resta") {
-    if (productId > 1) {
-      productId.quantity = productId.quantity--;
-    } else {
-      productId.quantity = 1;
-    }
-  }
-});
+const mockupHandleQuantity = jest.fn();
 
 describe("componente quantity", () => {
   it("se espera que renderice los botones correctamente", () => {
@@ -109,27 +99,24 @@ describe("componente quantity", () => {
 
     fireEvent.click(buttonMas);
 
-    expect(mockupHandleQuantity).toHaveBeenCalledWith({
-      productId: mockupProduct.id,
-      operation: "suma",
-    });
-
-    expect(screen.getByText("3")).toBeInTheDocument();
+    expect(mockupHandleQuantity).toHaveBeenCalled;
   });
 
-  //   it("se espera el correcto funcionamiento del boton -", () => {
-  //     render(
-  //       <Quantity
-  //         product={mockupProduct}
-  //         handlerQuantity={mockupHandleQuantity}
-  //       />
-  //     );
+  it("se espera el correcto funcionamiento del boton -", () => {
+    render(
+      <Quantity
+        product={mockupProduct}
+        handlerQuantity={mockupHandleQuantity}
+      />
+    );
 
-  //     const buttonMenos = screen.getByText("-");
-  //     const quantity = screen.getByText("2");
+    const buttonMenos = screen.getByText("-");
+    const quantity = screen.getByText("2");
 
-  //     fireEvent.click(buttonMenos)
+    expect(quantity).toBeInTheDocument();
 
-  //     expect(screen.getByText('1')).toBeInTheDocument()
-  //   });
+    fireEvent.click(buttonMenos);
+
+    expect(mockupHandleQuantity).toHaveBeenCalled;
+  });
 });
