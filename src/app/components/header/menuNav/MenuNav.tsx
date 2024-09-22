@@ -25,7 +25,7 @@ export default function MenuNav() {
 
   return (
     <>
-      <div className="flex items-center">
+      <div  data-testid="menu-nav" className="flex items-center">
         <button
           className={`${hoverPointer} relative ${
             isToggleOpen === true && "z-40"

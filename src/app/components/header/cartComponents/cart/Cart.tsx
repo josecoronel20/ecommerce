@@ -15,18 +15,20 @@ export default function Cart() {
   const context = useContext(ContextCart);
 
   if (!context) {
-    throw new Error("ContextCart must be used within a ContextCart.Provider");
+    return null;
   }
 
   const { cartItems, handlerQuantity, handlerDelete } = context;
 
   return (
-    <>
+    <div>
       <button
         onClick={handlerToggle}
         className={`${hoverPointer} relative ${
           isToggleOpen === true && "z-40"
         }`}
+        //datatestid 
+        data-testid="cart"
       >
         <ShoppingBagIcon className="size-6 text-colorDark1" />
       </button>
@@ -77,6 +79,6 @@ export default function Cart() {
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 }
