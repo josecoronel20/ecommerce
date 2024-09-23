@@ -1,9 +1,12 @@
 import React from "react";
-import layout from "./layout";
-import Hero from './components/home/Hero'
+import Hero from "./components/home/hero/Hero";
+import Carousel from "./components/home/carousel/Carousel";
 
-export default function Home () {
+export default function Home() {
   return (
-      <Hero/>
-  )
+    <>
+      <Hero />
+      <Carousel />
+    </>
+  );
 }

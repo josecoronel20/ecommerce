@@ -1,7 +1,7 @@
 //context Cart types
 export interface CartItems {
     id: number;
-    quantity: number;
+    quantity?: number;
     title: string;
     description: string;
     category: string;

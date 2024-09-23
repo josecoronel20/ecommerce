@@ -1,6 +1,6 @@
 import "./global.css";
 import Header from "./components/header/header/Header";
-import Footer from "./components/Footer";
+import Footer from "./components/footer/Footer";
 import { ProductsProvider } from "./context/ContextProducts";
 import { CartProvider } from "./context/ContextCart";
 
