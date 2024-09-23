@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <CartProvider>
           <body>
             <Header />
-            <main className="py-10 px-1">{children}</main>
+            <main>{children}</main>
             <Footer />
           </body>
         </CartProvider>

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { hoverPointer, styleButtonWhite } from "../../../../utils/styles";
+import { hoverPointer, styleButtonBorder, styleButtonWhite } from "../../../../utils/styles";
 import { useToggle } from "../../../../hooks/useToggle";
 import { ContextCart } from "../../../../context/ContextCart";
 import { useContext } from "react";
@@ -70,7 +70,7 @@ export default function Cart() {
                 <Link
                   onClick={handlerToggle}
                   href="/checkout"
-                  className={`${styleButtonWhite} ${hoverPointer} w-11/12`}
+                  className={`${styleButtonBorder} ${hoverPointer} w-11/12`}
                 >
                   Proceder al pago
                 </Link>

@@ -1,10 +1,9 @@
 import React from "react";
 import layout from "./layout";
+import Hero from './components/home/Hero'
 
 export default function Home () {
   return (
-    <layout>
-      <p>soy page principal</p>
-    </layout>
+      <Hero/>
   )
 }

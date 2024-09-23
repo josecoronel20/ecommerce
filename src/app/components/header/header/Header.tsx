@@ -7,7 +7,7 @@ import MenuNav from "../menuNav/MenuNav"
 
 export default function Header() {
   return (
-    <header className="p-1 fixed z-50 w-full bg-colorLight1">
+    <header className="p-1 top-0 left-0 fixed z-50 w-full bg-colorLight1">
       <div className=" flex flex-row justify-between items-center gap-2">
         <div className="flex flex-row items-center gap-2">
           <MenuNav/>
