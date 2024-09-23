@@ -4,6 +4,7 @@ import { hoverPointer, styleButtonWhite } from "../../utils/styles";
 import Link from "next/link";
 
 export default function Hero() {
+    //todo: corregir error de path newcolecction
   return (
     <section
       style={{
