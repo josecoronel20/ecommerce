@@ -1,16 +1,11 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
-import "@testing-library/react";
-import Header from "./Header";
-import Cart from "../cartComponents/cart/Cart";
-import { ContextCart } from "../../../context/ContextCart";
-
-const mockAddToCart = jest.fn
-const mockHandlerDelete = jest.fn
-const mockHandlerQuantity = jest.fn
+import "@testing-library/jest-dom";
+import Carousel from "./Carousel";
+import { ContextProducts } from "../../../context/ContextProducts";
 
 const mockContextValue = {
-  cartItems: [
+  products: [
     {
       id: 1,
       quantity: 1,
@@ -252,24 +247,21 @@ const mockContextValue = {
         "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
     },
   ],
-  addToCart:mockAddToCart,
-  handlerDelete : mockHandlerDelete,
-  handlerQuantity: mockHandlerQuantity,
+  loading: false, // Añade el estado de 'loading'
+  error: null, // Añade el valor para 'error'
 };
 
-describe("renderizado de componente header", () => {
-  it("se espera que se rendericen los componentes hijos correctamente", () => {
-    render(<ContextCart.Provider
-      value={mockContextValue}
-    >
-      <Header/>
-    </ContextCart.Provider>);
+describe("carousel render", () => {
+  it("debería renderizar correctamente el texto 'Ver todo'", () => {
+    render(
+      <ContextProducts.Provider value={mockContextValue}>
+        <Carousel />
+      </ContextProducts.Provider>
+    );
 
-    expect(screen.getByRole("banner")).toBeInTheDocument;
-    expect(screen.getByTestId("menu-nav")).toBeInTheDocument;
-    expect(screen.getByTestId("logo")).toBeInTheDocument;
-    expect(screen.getByTestId("search-bar")).toBeInTheDocument;
-
-    expect(screen.getByTestId("cart")).toBeInTheDocument;
-  });
+    expect(screen.getByText("Ver todo")).toBeInTheDocument();
+    expect(screen.getByText("Productos destacados")).toBeInTheDocument();
+    expect(screen.getByTestId('arrow-left')).toBeInTheDocument();
+    expect(screen.getByTestId('arrow-right')).toBeInTheDocument();
+});
 });

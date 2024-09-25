@@ -10,3 +10,16 @@
 body {
   font-family: 'Instrument Sans', sans-serif;
 }
+
+.scrollbar-hidden{
+  scrollbar-width: none;
+}
+
+.scroll-container{
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory
+}
+
+.cardSnap{
+  scroll-snap-align: start;
+}
