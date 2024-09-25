@@ -4,6 +4,7 @@ import "@testing-library/jest-dom";
 import Carousel from "./Carousel";
 import { ContextProducts } from "../../../context/ContextProducts";
 
+//agrega mockup de contexto ya que al no obtener los productos por el contexto el cart no se renderiza
 const mockContextValue = {
   products: [
     {

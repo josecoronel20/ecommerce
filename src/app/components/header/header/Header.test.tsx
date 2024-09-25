@@ -2,12 +2,13 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 import "@testing-library/react";
 import Header from "./Header";
-import Cart from "../cartComponents/cart/Cart";
 import { ContextCart } from "../../../context/ContextCart";
 
+//agrega mockup de contexto ya que al no obtener los productos por el contexto el cart no se renderiza
 const mockAddToCart = jest.fn
 const mockHandlerDelete = jest.fn
 const mockHandlerQuantity = jest.fn
+const mockSetCartItem = jest.fn
 
 const mockContextValue = {
   cartItems: [
@@ -255,6 +256,7 @@ const mockContextValue = {
   addToCart:mockAddToCart,
   handlerDelete : mockHandlerDelete,
   handlerQuantity: mockHandlerQuantity,
+  setCartItems:mockSetCartItem,
 };
 
 describe("renderizado de componente header", () => {

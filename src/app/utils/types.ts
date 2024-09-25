@@ -1,7 +1,7 @@
 //context Cart types
 export interface CartItems {
     id: number;
-    quantity?: number;
+    quantity: number;
     title: string;
     description: string;
     category: string;
@@ -55,6 +55,7 @@ export interface CartItems {
     addToCart: (product: CartItems) => void;
     handlerDelete: HandlerDeleteParams;
     handlerQuantity: HandlerQuantityParams;
+    setCartItems:React.Dispatch<React.SetStateAction<CartItems[]>>;
   }
   
   //context products types

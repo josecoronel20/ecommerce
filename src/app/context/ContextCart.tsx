@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useState, ReactNode } from "react";
-import { CartItems, CartContextType, HandlerQuantityParams  } from "../utils/types";
+import { CartItems, CartContextType  } from "../utils/types";
 
 export const ContextCart = createContext<CartContextType | undefined>(undefined);
 
@@ -285,7 +285,7 @@ export function CartProvider({ children }: CartProviderProps) {
 
   return (
     <ContextCart.Provider
-      value={{ cartItems, addToCart, handlerDelete, handlerQuantity }}
+      value={{ cartItems, addToCart, handlerDelete, handlerQuantity,setCartItems }}
     >
       {children}
     </ContextCart.Provider>
