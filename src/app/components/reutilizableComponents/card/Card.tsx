@@ -8,6 +8,7 @@ interface CardProps {
   product: Products;
 }
 
+
 export default function Card({ product }: CardProps) {
   return (
     <div className="min-w-40 p-1 gap-1 flex flex-col cardSnap">

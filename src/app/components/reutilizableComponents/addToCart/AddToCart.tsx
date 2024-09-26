@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import {
   hoverPointer,
@@ -10,6 +10,7 @@ import { ContextProducts } from "../../../context/ContextProducts";
 export default function AddToCart({ productId }: { productId: number }) {
   const contextCart = useContext(ContextCart);
   const contextProducts = useContext(ContextProducts);
+  const [addSuccessful, setAddSuccessful] = useState<boolean>(false)
 
   if (!contextCart) {
     return null;
@@ -22,6 +23,9 @@ export default function AddToCart({ productId }: { productId: number }) {
   const { cartItems, setCartItems } = contextCart;
 
   const { products } = contextProducts;
+
+  const elementToRender = addSuccessful === true ? "Se agregó al carrito!" : <ShoppingBagIcon data-testid='cart-icon' className="size-6" />
+
 
   const handlerAddItem = () => {
     const productFinded = products.find((product) => product.id === productId);
@@ -43,15 +47,18 @@ export default function AddToCart({ productId }: { productId: number }) {
       }
     }
 
-    console.log(cartItems)
+    setAddSuccessful(true)
+    setTimeout(() => {
+        setAddSuccessful(false)
+    }, 2000);
+
   };
 
   return (
     <button
       onClick={() => handlerAddItem()}
-      className={`${hoverPointer} ${styleButtonDark}`}
+      className={`${hoverPointer} ${styleButtonDark} text-sm`}
     >
-      <ShoppingBagIcon className="size-6" />
-    </button>
+{elementToRender}    </button>
   );
 }
