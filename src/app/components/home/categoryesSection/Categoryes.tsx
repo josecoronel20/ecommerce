@@ -11,11 +11,12 @@ interface CategoryImageProps {
 }
 
 export default function Categoryes() {
-
   const CategoryImage = ({ src, title, path }: CategoryImageProps) => {
     return (
       <div
-        className={`relative h-40 ${title === "Perfume" ? "col-span-2" : ""} ${hoverPointer} `}
+        className={`relative h-40 ${
+          title === "Perfume" ? "col-span-2" : ""
+        } ${hoverPointer} `}
       >
         <Link href={path}>
           <Image
@@ -32,9 +33,9 @@ export default function Categoryes() {
           />
           <div
             className={`
-            }  absolute bottom-1 w-full px-3 py-2 `}
+            absolute bottom-1 w-full px-4 py-2 `}
           >
-            <h3 className="bg-colorLight1 rounded-xl p-1 flex justify-center">
+            <h3 className="bg-colorLight1 rounded-xl p-1 flex justify-center scale-105">
               {title}
             </h3>
           </div>

@@ -17,6 +17,8 @@ describe('renderizado de categoryes', () => {
         //comprueba el renderuzadi de todos los titulos
         const titulos = screen.getAllByRole('heading', {level:3})
 
+        expect(titulos.length).toBe(5)
+
         titulos.forEach((titulo) => {
             expect(titulo).toBeInTheDocument
         })
