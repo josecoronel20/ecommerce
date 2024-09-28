@@ -11,6 +11,9 @@ export default function CartCard({item, handlerQuantity, handlerDelete}: {
     handlerDelete: HandlerDeleteParams;
   }){
 
+
+    //todo:corregir bg size de cards
+    //cambiar img por image de next
 return (<><div className="grid grid-cols-2 gap-1 col-span-2">
     <img
       className="bg-colorLight2 rounded"
