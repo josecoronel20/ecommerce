@@ -1,11 +1,11 @@
 import React from "react";
 import {screen, render} from "@testing-library/react"
 import '@testing-library/jest-dom'
-import Categoryes from "./Categoryes";
+import CategoryesHome from "./CategoryesHome";
 
 describe('renderizado de categoryes', () => {
     it('deberia renderizar correctamente los elementos de la seccion de categorias', () => {
-        render(<Categoryes/> )
+        render(<CategoryesHome/> )
 
         //comprueba el renderizado de todas las imagenes
         const images = screen.getAllByRole('img')

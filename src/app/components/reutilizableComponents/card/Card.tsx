@@ -11,7 +11,7 @@ interface CardProps {
 
 export default function Card({ product }: CardProps) {
   return (
-    <div className="min-w-40 p-1 gap-1 flex flex-col cardSnap">
+    <div className="min-w-40 max-w-40 p-1 gap-1 flex flex-col cardSnap">
       <Link href={`/products/${product.id}`} className="flex flex-col gap-1">
         <div className="relative min-h-40 w-full bg-colorLight2 rounded-lg overflow-hidden">
           <Image

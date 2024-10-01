@@ -1,3 +1,4 @@
+'use client'
 import React, { useContext, useState } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import {

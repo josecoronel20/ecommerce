@@ -26,7 +26,7 @@ export default function Footer() {
           <Li url={"/products"} title={"Productos"} />
           <Li url={"/contact"} title={"Contacto"} />
           <Li url={"/products/offer"} title={"Ofertas"} />
-          <Li url={"/products/newColection"} title={"Nueva Colección"} />
+          <Li url={"/products/fragrances"} title={"Nueva Colección"} />
         </ul>
       </nav>
     </section>

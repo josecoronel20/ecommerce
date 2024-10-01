@@ -1,6 +1,5 @@
 "use client";
-import React, { useContext, useRef } from "react";
-import { ContextProducts } from "../../../context/ContextProducts";
+import React, { useRef } from "react";
 import Card from "../../reutilizableComponents/card/Card";
 import {
   ArrowLeftCircleIcon,
@@ -8,23 +7,16 @@ import {
 } from "@heroicons/react/24/solid";
 import { hoverPointer } from "../../../utils/styles";
 import Link from "next/link";
+import useFilter from "../../../hooks/useFilter";
 
 export default function Carousel() {
   const refContainer = useRef<HTMLDivElement>(null);
 
-  //obtiene todos los productos del contexto
-  const productsContext = useContext(ContextProducts);
+  const productsFiltered = useFilter({category: "fragrances"})
 
-  if (!productsContext) {
-    return null;
+  if(!productsFiltered){
+    return null
   }
-
-  const { products } = productsContext;
-
-  //filtra los productos de fragances
-  const productsFiltered = products.filter(
-    (product) => product.category === "fragrances"
-  );
 
   const scrollAmount = 100;
 

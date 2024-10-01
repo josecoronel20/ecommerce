@@ -10,7 +10,6 @@ interface ProductsProviderProps{
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
   const categoryList:string[] = [
-    "beauty",
     "fragrances",
     "mens-shirts",
     "mens-shoes",
@@ -21,6 +20,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     "womens-jewellery",
     "womens-shoes",
     "womens-watches",
+    "vehicles",
   ];
 
   const [products, setProducts] = useState<Products[]>([]);

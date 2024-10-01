@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { hoverPointer } from "../../../utils/styles";
 
 interface CategoryImageProps {
@@ -10,7 +10,7 @@ interface CategoryImageProps {
   path: string;
 }
 
-export default function Categoryes() {
+export default function CategoryesHome() {
   const CategoryImage = ({ src, title, path }: CategoryImageProps) => {
     return (
       <div
@@ -50,29 +50,29 @@ export default function Categoryes() {
       <div className="grid grid-cols-2">
         <CategoryImage
           src={"/ecommerce/images/CategorySport.webp"}
-          path={"/products/sport"}
+          path={"/products/sports"}
           title={"Deporte"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryWoman.webp"}
-          path={"/products/woman"}
+          path={"/products/womens"}
           title={"Mujer"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryPerfume.webp"}
-          path={"/products/perfume"}
+          path={"/products/fragrances"}
           title={"Perfume"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryMan.webp"}
-          path={"/products/man"}
+          path={"/products/mens"}
           title={"Hombre"}
         />
 
         <CategoryImage
           src={"/ecommerce/images/CategoryKid.webp"}
-          path={"/products/kid"}
-          title={"Niños"}
+          path={"/products/vehicles"}
+          title={"Vehículos"}
         />
       </div>
     </section>
