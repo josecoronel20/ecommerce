@@ -20,7 +20,7 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
     "womens-jewellery",
     "womens-shoes",
     "womens-watches",
-    "vehicles",
+    "vehicle",
   ];
 
   const [products, setProducts] = useState<Products[]>([]);

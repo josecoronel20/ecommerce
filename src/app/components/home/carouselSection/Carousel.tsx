@@ -12,7 +12,7 @@ import useFilter from "../../../hooks/useFilter";
 export default function Carousel() {
   const refContainer = useRef<HTMLDivElement>(null);
 
-  const productsFiltered = useFilter({category: "fragrances"})
+  const productsFiltered = useFilter({categoryString: "fragrances"})
 
   if(!productsFiltered){
     return null

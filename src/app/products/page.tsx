@@ -4,6 +4,7 @@ import useFilter from "../hooks/useFilter";
 import Card from "../components/reutilizableComponents/card/Card";
 
 export default function CategoryPage() {
+  //todo:trabajar en paginacion
   const productsFiltered = useFilter({ categoryString: "" });
 
   if (!productsFiltered) {

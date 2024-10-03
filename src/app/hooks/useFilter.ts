@@ -5,7 +5,7 @@ import { Products } from "../utils/types";
 //TODO:arreglar filtrado de womens y mens, agregar test
 
 interface UseFilterProp {
-  categoryString: "fragrances" | "mens" | "womens" | "sports" | "vehicles" | "";
+  categoryString: "fragrances" | "mens" | "womens" | "sports" | "vehicle" | "";
 }
 
 const useFilter = ({ categoryString }: UseFilterProp): Products[] | null => {
