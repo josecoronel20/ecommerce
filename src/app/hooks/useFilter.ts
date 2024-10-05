@@ -26,7 +26,6 @@ const useFilter = ({ categoryString }: UseFilterProp): Products[] | null => {
 
   // Filtra los productos por categoría
   const productsFiltered = products.filter((product) =>
-    
     product.category.includes(categoryString) );
 
   // Retorna el array filtrado (puede ser vacío, pero no null)
