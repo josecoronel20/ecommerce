@@ -71,7 +71,7 @@ export default function CategoryesHome() {
 
         <CategoryImage
           src={"/ecommerce/images/CategoryKid.webp"}
-          path={"/products/vehicles"}
+          path={"/products/vehicle"}
           title={"Vehículos"}
         />
       </div>
