@@ -12,8 +12,11 @@ import useFilter from "../../../hooks/useFilter";
 export default function Carousel() {
   const refContainer = useRef<HTMLDivElement>(null);
 
-  const productsFiltered = useFilter({categoryString: "fragrances"})
-
+  const productsFiltered = useFilter({
+    filterBy: "categoryGeneral",
+    filterProp: "fragrances",
+    filterComponentProp: ["",0,0],
+  });
   if(!productsFiltered){
     return null
   }
