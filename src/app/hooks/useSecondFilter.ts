@@ -1,18 +1,18 @@
 import { Products } from "../utils/types";
 
-interface useFilterComponentProp {
+interface useSecondFilterProp {
   productsFiltered: Products | Products[];
   subCategory: string;
   rating: number;
   price: number;
 }
 
-const useFilterComponent = ({
+const useSecondFilter = ({
   productsFiltered,
   subCategory,
   rating,
   price,
-}: useFilterComponentProp) => {
+}: useSecondFilterProp) => {
   if (Array.isArray(productsFiltered)) {
     const productsSubFiltered = productsFiltered.filter((product: Products) => {
       const matchSubCategory =
@@ -24,8 +24,8 @@ const useFilterComponent = ({
       return matchSubCategory && matchRating && matchPrice;
     });
 
-    return productsSubFiltered
+    return productsSubFiltered;
   }
 };
 
-export default useFilterComponent;
+export default useSecondFilter;

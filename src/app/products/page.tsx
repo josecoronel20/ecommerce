@@ -1,24 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import useFilter from "../hooks/useFilter";
 import Card from "../components/reutilizableComponents/card/Card";
 import FilterComponent from "../components/products/FilterComponent";
-import { CartItems } from "../utils/types";
 
 export default function CategoryPage() {
+  //todo:trabajar en paginacion
   //parametros del filtro
-  const [filtroProps, setFiltroProps] = useState<(string | number)[]>([]);
+  const [filtroProps, setFiltroProps] = useState<[string, number, number]>([
+    "",
+    0,
+    0,
+  ]);
 
   //funcion para actualizar los parametros
-  const handlerFiltroChange = (nuevasProps: (string | number)[]) => {
+  const handlerFiltroChange = (nuevasProps: [string, number, number]) => {
     setFiltroProps(nuevasProps);
   };
 
-  //todo:trabajar en paginacion
   const productsFiltered = useFilter({
     filterBy: "categoryGeneral",
     filterProp: "all",
-    filterComponentProp:filtroProps
+    filterComponentProp: filtroProps,
   });
 
   //si no existen los productos filtrados o los productos filtrados no es array, se retorna null

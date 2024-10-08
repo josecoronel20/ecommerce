@@ -1,7 +1,9 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { ContextProducts } from "../context/ContextProducts";
-
-//TODO:arreglar filtrado de womens y mens, agregar test
+import useFilterComponent from "./useSecondFilter";
+import { Products } from "../utils/types";
+import { useProducts } from "./useContextProducts";
+import useSecondFilter from "./useSecondFilter";
 
 interface UseFilterProp {
   filterBy: "categoryGeneral" | "categorySingle" | "id" | "rating" | "price";
@@ -23,92 +25,88 @@ interface UseFilterProp {
     | "womens-watches"
     | "vehicle"
     | number;
-    filterComponentProp:(string | number)[]
+  filterComponentProp: [string,number,number];
 }
 
-const useFilter = ({ filterBy, filterProp,filterComponentProp }: UseFilterProp) => {
-  // Obtiene todos los productos del contexto
-  const productsContext = useContext(ContextProducts);
+const useFilter = ({
+  filterBy,
+  filterProp,
+  filterComponentProp,
+}: UseFilterProp) => {
+  // Accede al contexto de los productos
+  const { products } = useProducts();
 
-  //desestructura los valores elegidos en el filtro
-  const [subCategory,rating,price] = filterComponentProp
+  let productsFiltered: Products[] = []; // Define como un array vacío inicialmente
 
-  // Si no hay contexto, retorna null
-  if (!productsContext) {
-    return null;
-  }
+  const [subCategory = "", rating = 0, price = 0] = filterComponentProp || ["", 0, 0];
 
-  const { products } = productsContext;
-
-  let productsFiltered;
-
-  //filtro segun necesidad
+  // Filtro según necesidad
   switch (filterBy) {
     case "categoryGeneral":
       if (filterProp === "all") {
-        return products;
-      }
-
-      // Filtra los productos por categoría general
-      productsFiltered = products.filter((product) => {
-        if (typeof filterProp === "string") {
-          if (filterProp === "mens") {
-            return product.category.match(/^men(-\w+)?/);
-          } else {
-            return product.category.includes(filterProp);
+        productsFiltered = products; // Retorna todos los productos
+      } else {
+        // Filtra los productos por categoría general
+        productsFiltered = products.filter((product) => {
+          if (typeof filterProp === "string") {
+            if (filterProp === "mens") {
+              return product.category.match(/^men(-\w+)?/);
+            } else {
+              return product.category.includes(filterProp);
+            }
           }
-        }
-      });
-
-      return productsFiltered;
+          return false;
+        });
+      }
       break;
 
     case "categorySingle":
-      // Filtra los productos por categoría especifica
+      // Filtra los productos por categoría específica
       if (typeof filterProp === "string") {
         productsFiltered = products.filter((product) => {
-          if (filterProp) {
-            return product.category.includes(filterProp);
-          }
+          product.category === filterProp;
         });
-
-        return productsFiltered;
       }
-
       break;
 
     case "id":
       if (typeof filterProp === "number") {
-        productsFiltered = products.find((product) => {
-          product.id === filterProp || null;
-        });
-        return productsFiltered;
+        const foundProduct = products.find(
+          (product) => product.id === filterProp
+        );
+        // Si encuentra un producto, lo convierte en un array
+        productsFiltered = foundProduct ? [foundProduct] : [];
       }
-
-      break;
+      break; // Sale del switch
 
     case "rating":
       if (typeof filterProp === "number") {
         const ratingRounded = Math.round(filterProp);
         productsFiltered = products.filter((product) => {
-          product.rating <= ratingRounded;
+          return product.rating <= ratingRounded;
         });
-
-        return productsFiltered;
       }
-
-      break;
+      break; // Sale del switch
 
     case "price":
       if (typeof filterProp === "number") {
-        productsFiltered = products.filter((products) => {
-          products.price <= filterProp;
+        productsFiltered = products.filter((product) => {
+          return product.price <= filterProp;
         });
-
-        return productsFiltered;
       }
-      break;
+      break; // Sale del switch
   }
+
+  
+  // Llamamos al hook siempre con un array
+  const productsSubFiltered = useSecondFilter({
+    productsFiltered: productsFiltered, // Asegúrate de pasar siempre un array
+    subCategory: subCategory,
+    rating: rating,
+    price: price,
+  });
+
+  return productsSubFiltered; // Retorna los productos filtrados
 };
 
 export default useFilter;
