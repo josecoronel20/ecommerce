@@ -6,18 +6,28 @@ interface StarsProp {
 }
 
 export default function Stars({ rating }: StarsProp) {
-  const starsYellowArray = [...Array(Math.round(rating))];
-  const starsGreyArray = [...Array(5 - Math.round(rating))];
+  const starsYellow = Array(Math.round(rating)).fill(0)
+  const starsGrey =  Array(5 - starsYellow.length).fill(0)
 
   return (
     <div className="flex gap-1">
-      {starsYellowArray.map((_, index) => {
-        return <StarIcon key={index} className=" size-6 text-yellow-300" />;
+      {starsYellow.map((_, index) => {
+        return (
+          <StarIcon
+            data-testid={`star-yellow-${index + 1}`}
+            key={index}
+            className=" size-6 text-yellow-300"
+          />
+        );
       })}
 
-      {starsGreyArray.map((_, index) => {
+      {starsGrey.map((_, index) => {
         return (
-          <StarIcon key={index + rating} className="size-6 text-colorDark2" />
+          <StarIcon
+            data-testid={`star-grey-${index + rating + 1}`}
+            key={index + rating}
+            className="size-6 text-colorDark2"
+          />
         );
       })}
     </div>
