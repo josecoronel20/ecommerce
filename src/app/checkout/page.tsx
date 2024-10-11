@@ -12,8 +12,8 @@ export default function Checkout() {
         <CardCheckout />
       </div>
 
-      <div>
-        <h2>Colocar detalles de facturación</h2>
+      <div className="flex flex-col gap-1">
+        <h2 className="text-lg font-medium">Colocar detalles de facturación</h2>
         <FormCheckout/>
       </div>
     </section>
