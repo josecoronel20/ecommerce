@@ -10,6 +10,19 @@ import {
 
 export default function FormCheckout() {
   const [flagsNames, setFlagsNames] = useState([]);
+  const [mail, setMail] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [cardDate, setCardDate] = useState("");
+  const [cardPassword, setCardPassword] = useState("");
+  const [cardName, setCardName] = useState("");
+  const [country, setCountry] = useState("");
+  const [adress, setAdress] = useState("");
+
+  const [form, setForm] = useState([]);
+
+  useEffect(()=>{console.log(country)
+  },[country])
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -39,6 +52,8 @@ export default function FormCheckout() {
         <input
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="mail"
+          value={mail}
+          onChange={(e) => setMail(e.target.value)}
           placeholder="emailExample123@hotmail.com"
         />
       </div>
@@ -50,17 +65,23 @@ export default function FormCheckout() {
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="number"
           placeholder="1234 5678 1234 5678"
+          value={cardNumber}
+          onChange={(e) => setCardNumber(e.target.value)}
         />
         <div className="grid gap-1 grid-cols-2">
           <input
             className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
             type="number"
             placeholder="12/34"
+            value={cardDate}
+            onChange={(e) => setCardDate(e.target.value)}
           />
           <input
             className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
             type="number"
             placeholder="123"
+            value={cardPassword}
+            onChange={(e) => setCardPassword(e.target.value)}
           />
         </div>
       </div>
@@ -72,15 +93,22 @@ export default function FormCheckout() {
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="text"
           placeholder="Juan Lopez"
+          value={mail}
+          onChange={(e) => setMail(e.target.value)}
         />
       </div>
       <div className="flex flex-col gap-1">
         <p className="font-medium text-colorLight3">Dirección</p>
-        <select name="countryName" id="countryName">
+        <select
+          name="countryName"
+          id="countryName"
+          value={country}
+          onChange={(e) => setCountry(e.target.value)}
+        >
           {Object.keys(flagsNames).length > 0
             ? Object.entries(flagsNames).map(([code, country]) => {
                 return (
-                  <option key={code} value={code}>
+                  <option key={code} value={country}>
                     {country}
                   </option>
                 );
@@ -91,14 +119,18 @@ export default function FormCheckout() {
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="text"
           placeholder="Dirección 123 (Buenos Aires)"
+          value={mail}
+          onChange={(e) => set(e.target.value)}
         />
       </div>
-      <Link
-        className={`${hoverPointer} ${styleButtonBorder}`}
-        href={"/OrderConfirmation"}
-      >
-        Confirmar el pago
-      </Link>
+      <button type="submit">
+        <Link
+          className={`${hoverPointer} ${styleButtonBorder}`}
+          href={"/OrderConfirmation"}
+        >
+          Confirmar el pago
+        </Link>
+      </button>
     </form>
   );
 }
