@@ -16,12 +16,29 @@ export default function FormCheckout() {
   const [cardPassword, setCardPassword] = useState("");
   const [cardName, setCardName] = useState("");
   const [country, setCountry] = useState("");
-  const [adress, setAdress] = useState("");
+  const [address, setAddress] = useState("");
 
-  const [form, setForm] = useState([]);
+  const [form, setForm] = useState<string[]>([]);
 
-  useEffect(()=>{console.log(country)
-  },[country])
+  const handlerForm = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (
+      mailRegex.test(mail) &&
+      cardNumberRegex.test(cardNumber) &&
+      cardDateRegex.test(cardDate)
+    ) {
+      setForm([
+        mail,
+        cardNumber,
+        cardDate,
+        cardPassword,
+        cardName,
+        country,
+        address,
+      ]);
+    }
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -43,12 +60,24 @@ export default function FormCheckout() {
     fetchData();
   }, []);
 
+  //regex
+  const mailRegex = /^[\w._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const cardNumberRegex = /^\d{16}$/;
+  const cardDateRegex = /^[0-9]{1,2}\/[0-9]{1,2}$/;
+  const cardPasswordRegex = /^\d{3}$/;
+
   return (
-    <form className="border-t border-colorLight2 flex flex-col gap-4 py-1">
+    <form
+      className="border-t border-colorLight2 flex flex-col gap-4 py-1"
+      onSubmit={handlerForm}
+    >
       <div className="flex flex-col gap-1">
-        <label className="font-medium text-colorLight3" htmlFor="email">
-          Email
-        </label>
+        <div className="flex justify-between">
+          <label className="font-medium text-colorDark1" htmlFor="email">
+            Email
+          </label>
+          {!mailRegex.test(mail) && <p className="text-red-600 text-lg">*</p>}
+        </div>
         <input
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="mail"
@@ -57,10 +86,18 @@ export default function FormCheckout() {
           placeholder="emailExample123@hotmail.com"
         />
       </div>
+
       <div className="flex flex-col gap-1">
-        <p className="font-medium text-colorLight3">
-          Información de la tarjeta
-        </p>
+        <div className="flex justify-between">
+          <p className="font-medium text-colorDark1">
+            Información de la tarjeta
+          </p>
+          {!cardNumberRegex.test(cardNumber) ||
+          !cardDateRegex.test(cardDate) ||
+          !cardPasswordRegex.test(cardPassword) ? (
+            <p className="text-red-600 text-lg">*</p>
+          ) : null}
+        </div>
         <input
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="number"
@@ -71,7 +108,7 @@ export default function FormCheckout() {
         <div className="grid gap-1 grid-cols-2">
           <input
             className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
-            type="number"
+            type="text"
             placeholder="12/34"
             value={cardDate}
             onChange={(e) => setCardDate(e.target.value)}
@@ -86,19 +123,19 @@ export default function FormCheckout() {
         </div>
       </div>
       <div className="flex flex-col gap-1">
-        <label className="font-medium text-colorLight3" htmlFor="cardName">
+        <label className="font-medium text-colorDark1" htmlFor="cardName">
           Nombre de la tarjeta
         </label>
         <input
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="text"
           placeholder="Juan Lopez"
-          value={mail}
-          onChange={(e) => setMail(e.target.value)}
+          value={cardName}
+          onChange={(e) => setCardName(e.target.value)}
         />
       </div>
       <div className="flex flex-col gap-1">
-        <p className="font-medium text-colorLight3">Dirección</p>
+        <p className="font-medium text-colorDark1">Dirección</p>
         <select
           name="countryName"
           id="countryName"
@@ -119,17 +156,18 @@ export default function FormCheckout() {
           className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
           type="text"
           placeholder="Dirección 123 (Buenos Aires)"
-          value={mail}
-          onChange={(e) => set(e.target.value)}
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
         />
       </div>
       <button type="submit">
-        <Link
+        aa
+        {/* <Link
           className={`${hoverPointer} ${styleButtonBorder}`}
           href={"/OrderConfirmation"}
         >
           Confirmar el pago
-        </Link>
+        </Link> */}
       </button>
     </form>
   );
