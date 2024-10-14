@@ -7,7 +7,7 @@ import {
   styleButtonBorder,
   styleButtonWhite,
 } from "../../utils/styles";
-
+import { useRouter } from "next/navigation";
 export default function FormCheckout() {
   const [flagsNames, setFlagsNames] = useState([]);
   const [mail, setMail] = useState("");
@@ -20,6 +20,8 @@ export default function FormCheckout() {
 
   const [form, setForm] = useState<string[]>([]);
 
+  const router = useRouter();
+
   const handlerForm = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -28,7 +30,7 @@ export default function FormCheckout() {
       cardNumberRegex.test(cardNumber) &&
       cardDateRegex.test(cardDate)
     ) {
-      setForm([
+      const formUpdate = [
         mail,
         cardNumber,
         cardDate,
@@ -36,10 +38,15 @@ export default function FormCheckout() {
         cardName,
         country,
         address,
-      ]);
+      ];
+      setForm(formUpdate);
+
+      localStorage.setItem("formData", JSON.stringify(formUpdate));
+      router.push("/orderConfirmation");
     }
   };
 
+  //peticion de banderas
   useEffect(() => {
     async function fetchData() {
       try {
@@ -84,6 +91,7 @@ export default function FormCheckout() {
           value={mail}
           onChange={(e) => setMail(e.target.value)}
           placeholder="emailExample123@hotmail.com"
+          required
         />
       </div>
 
@@ -104,6 +112,7 @@ export default function FormCheckout() {
           placeholder="1234 5678 1234 5678"
           value={cardNumber}
           onChange={(e) => setCardNumber(e.target.value)}
+          required
         />
         <div className="grid gap-1 grid-cols-2">
           <input
@@ -112,6 +121,7 @@ export default function FormCheckout() {
             placeholder="12/34"
             value={cardDate}
             onChange={(e) => setCardDate(e.target.value)}
+            required
           />
           <input
             className="bg-colorLight2 placeholder:text-colorLight3 rounded p-1"
@@ -119,6 +129,7 @@ export default function FormCheckout() {
             placeholder="123"
             value={cardPassword}
             onChange={(e) => setCardPassword(e.target.value)}
+            required
           />
         </div>
       </div>
@@ -132,6 +143,7 @@ export default function FormCheckout() {
           placeholder="Juan Lopez"
           value={cardName}
           onChange={(e) => setCardName(e.target.value)}
+          required
         />
       </div>
       <div className="flex flex-col gap-1">
@@ -158,16 +170,11 @@ export default function FormCheckout() {
           placeholder="Dirección 123 (Buenos Aires)"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+          required
         />
       </div>
-      <button type="submit">
-        aa
-        {/* <Link
-          className={`${hoverPointer} ${styleButtonBorder}`}
-          href={"/OrderConfirmation"}
-        >
-          Confirmar el pago
-        </Link> */}
+      <button className={`${hoverPointer} ${styleButtonBorder}`} type="submit">
+        Confirmar el pago
       </button>
     </form>
   );
