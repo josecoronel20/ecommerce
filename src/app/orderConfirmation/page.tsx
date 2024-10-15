@@ -37,24 +37,24 @@ export default function OrderConfirmation() {
         <CardCheckout />
       </section>
 
-      <section>
-        <h1>Gracias por su compra</h1>
+      <section className="flex flex-col gap-2 text-colorDark1">
+        <h1 className="text-3xl font-semibold">Gracias por su compra!</h1>
         <h2>
           Su pedido será procesado dentro de las próximas 24 horas hábiles. Una
           vez que la compra haya sido confirmada, recibirá una notificación por
           correo electrónico
         </h2>
-        <div>
-          <h3>Dirección de facturación</h3>
-          <div>
-            <div>
-              <p>nombre</p> <p>{formData[4]}</p>
+        <div className="flex flex-col gap-2">
+          <h3 className="text-2xl font-semibold">Dirección de facturación</h3>
+          <div className="flex flex-col gap-1">
+            <div className="flex justify-between">
+              <h4>nombre</h4> <p>{formData[4]}</p>
             </div>
-            <div>
-              <p>Dirección</p> <p>{formData[6]}</p>
+            <div className="flex justify-between">
+              <h4>Dirección</h4> <p>{formData[6]}</p>
             </div>
-            <div>
-              <p>Email</p> <p>{formData[0]}</p>
+            <div className="flex justify-between">
+              <h4>Email</h4> <p>{formData[0]}</p>
             </div>
           </div>
           <button
