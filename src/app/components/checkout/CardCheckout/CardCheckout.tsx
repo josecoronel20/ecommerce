@@ -34,10 +34,11 @@
 "use client";
 import React from "react";
 import { useContext } from "react";
-import { ContextCart } from "../../context/ContextCart";
-import { CartItems } from "../../utils/types";
-import PriceTotal from "../header/cartComponents/priceTotal/PriceTotal";
-import PriceIndividual from "../header/cartComponents/priceIndividual/PriceIndividual";
+import { ContextCart } from "../../../context/ContextCart";
+import { CartItems } from "../../../utils/types";
+import PriceTotal from "../../header/cartComponents/priceTotal/PriceTotal";
+import PriceIndividual from "../../header/cartComponents/priceIndividual/PriceIndividual";
+import Image from "next/image";
 
 export default function CardCheckout() {
   const context = useContext(ContextCart);
@@ -49,11 +50,11 @@ export default function CardCheckout() {
   const { cartItems, handlerQuantity, handlerDelete } = context;
 
   return (
-    <section className="border border-s-colorLight3 p-4 rounded-md gap-2">
+    <section className=" p-4 rounded-md gap-2 bg-colorLight2">
       <div className="flex flex-col gap-2">
         {cartItems.map((product: CartItems) => (
           <div key={product.id} className="grid grid-cols-6 gap-1">
-            <img
+            <Image
               className="bg-colorLight2 rounded"
               src={product.images[0]}
               alt={`img de ${product.title}`}

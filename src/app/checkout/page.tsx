@@ -1,5 +1,5 @@
 import React from "react";
-import CardCheckout from "../components/checkout/CardCheckout";
+import CardCheckout from "../components/checkout/CardCheckout/CardCheckout";
 import FormCheckout from "../components/checkout/FormCheckout";
 
 export default function Checkout() {

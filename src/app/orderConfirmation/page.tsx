@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext, useEffect, useState } from "react";
-import CardCheckout from "../components/checkout/CardCheckout";
+import CardCheckout from "../components/checkout/CardCheckout/CardCheckout";
 import Link from "next/link";
 import { hoverPointer, styleButtonBorder } from "../utils/styles";
 import { ContextCart } from "../context/ContextCart";
