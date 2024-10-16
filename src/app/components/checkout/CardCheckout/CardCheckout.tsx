@@ -54,23 +54,27 @@ export default function CardCheckout() {
       <div className="flex flex-col gap-2">
         {cartItems.map((product: CartItems) => (
           <div key={product.id} className="grid grid-cols-6 gap-1">
-            <Image
-              className="bg-colorLight2 rounded"
-              src={product.images[0]}
-              alt={`img de ${product.title}`}
-            />
+            <div className="relative max-h-40 w-full rounded overflow-hidden">
+              <Image
+                src={product.images[0]}
+                alt={product.title}
+                fill
+                className="p-1 object-contain"
+              />
+            </div>
+
             <div className="col-span-3">
               <p className="">{product.title}</p>
               <p className="text-colorLight3">
                 {product.quantity} producto{product.quantity > 1 && "s"}
               </p>
             </div>
-            <p className="col-span-2">
+            <div className="col-span-2">
               <PriceIndividual
                 quantity={product.quantity}
                 price={product.price}
               />
-            </p>
+            </div>
           </div>
         ))}
       </div>

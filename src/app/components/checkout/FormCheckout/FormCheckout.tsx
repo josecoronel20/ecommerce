@@ -6,7 +6,7 @@ import {
   hoverPointer,
   styleButtonBorder,
   styleButtonWhite,
-} from "../../utils/styles";
+} from "../../../utils/styles";
 import { useRouter } from "next/navigation";
 export default function FormCheckout() {
   const [flagsNames, setFlagsNames] = useState([]);
