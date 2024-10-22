@@ -50,28 +50,28 @@ export default function CategoryesHome() {
       <div className="grid grid-cols-2">
         <CategoryImage
           src={"/ecommerce/images/CategorySport.webp"}
-          path={"/products/sports"}
+          path={"/products/category/sports"}
           title={"Deporte"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryWoman.webp"}
-          path={"/products/womens"}
+          path={"/products/category/womens"}
           title={"Mujer"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryPerfume.webp"}
-          path={"/products/fragrances"}
+          path={"/products/category/fragrances"}
           title={"Perfume"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryMan.webp"}
-          path={"/products/mens"}
+          path={"/products/category/mens"}
           title={"Hombre"}
         />
 
         <CategoryImage
           src={"/ecommerce/images/CategoryKid.webp"}
-          path={"/products/vehicle"}
+          path={"/products/category/vehicle"}
           title={"Vehículos"}
         />
       </div>

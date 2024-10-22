@@ -1,40 +1,45 @@
 "use client";
 import { usePathname } from "next/navigation";
-import React from "react";
-import { useFilterSingle } from "../../../hooks/useFilterSingle";
-import Image from "next/image";
-import Stars from "../../../components/reutilizableComponents/stars/Stars";
-import AddToCart from "../../../components/reutilizableComponents/addToCart/AddToCart";
-import ImagesDetail from "../../../components/productsDetail/ImagesDetail";
+import React, { useState } from "react";
+import useFilter from "../../../../hooks/useFilter";
+import ImagesDetail from "../../../../components/productsDetail/ImagesDetail";
+import { useFilterSingle } from "../../../../hooks/useFilterSingle";
+import Stars from "../../../../components/reutilizableComponents/stars/Stars";
+import AddToCart from "../../../../components/reutilizableComponents/addToCart/AddToCart";
 
 export default function ProductDetail() {
   const pathName = usePathname();
-  const id = parseInt(pathName.split("/")[3]);
+  const id = parseInt(pathName.split("/")[4]);
   console.log(id);
 
-  const productFiltered = useFilterSingle(id);
+  const [filtroProps, setFiltroProps] = useState<[string, number, number]>([
+    "",
+    0,
+    0,
+  ]);
 
-  if (!productFiltered) {
+  const productsFiltered = useFilterSingle(id);
+  if (!productsFiltered) {
     return null;
   }
   return (
     <div className="flex min-h-screen mt-11 p-2 flex-col gap-2 text-colorDark1">
-      <ImagesDetail productFiltered={productFiltered} />
+      <ImagesDetail productFiltered={productsFiltered} />
 
       <section
         className="flex flex-col gap-2" //detail section
       >
-        <p className="text-colorLight3 text-sm">{productFiltered.category}</p>
+        <p className="text-colorLight3 text-sm">{productsFiltered.category}</p>
 
-        <h1 className="text-xl font-semibold">{productFiltered.title}</h1>
+        <h1 className="text-xl font-semibold">{productsFiltered.title}</h1>
 
-        <h2 className="text-3xl font-semibold">${productFiltered.price}</h2>
+        <h2 className="text-3xl font-semibold">${productsFiltered.price}</h2>
 
         <div
           className="flex gap-1" //rating
         >
-          <Stars rating={productFiltered.rating} />
-          <p className="font-semibold1">{`(${productFiltered.rating})`}</p>
+          <Stars rating={productsFiltered.rating} />
+          <p className="font-semibold1">{`(${productsFiltered.rating})`}</p>
         </div>
 
         <div
@@ -42,18 +47,18 @@ export default function ProductDetail() {
         >
           <h3 className="font-semibold">Descripción</h3>
           <p className="text-colorLight3 text-sm">
-            {productFiltered.description}
+            {productsFiltered.description}
           </p>
         </div>
       </section>
 
-      <AddToCart productId={productFiltered.id} />
+      <AddToCart productId={productsFiltered.id} />
 
       <section
         className="py-3 flex flex-col gap-3" //reviews
       >
         <h4 className="font-semibold text-xl">Reviwes</h4>
-        {productFiltered.reviews.map((review) => {
+        {productsFiltered.reviews.map((review) => {
           return (
             <div className="flex flex-col gap-2 p-3" key={review.date}>
               <div className="flex justify-between">

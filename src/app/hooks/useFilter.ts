@@ -6,26 +6,15 @@ import { useProducts } from "./useContextProducts";
 import useSecondFilter from "./useSecondFilter";
 
 interface UseFilterProp {
-  filterBy: "categoryGeneral" | "categorySingle" | "id" | "rating" | "price";
-  filterProp:
-    | "fragrances"
-    | "mens"
-    | "womens"
-    | "sports"
-    | "vehicle"
-    | "all"
-    | "mens-shirts"
-    | "mens-shoes"
-    | "mens-watches"
-    | "sports-accessories"
-    | "womens-bags"
-    | "womens-dresses"
-    | "womens-jewellery"
-    | "womens-shoes"
-    | "womens-watches"
-    | "vehicle"
-    | number;
-  filterComponentProp: [string,number,number];
+  filterBy:
+    | "categoryGeneral"
+    | "categorySingle"
+    | "id"
+    | "rating"
+    | "price"
+    | "search";
+  filterProp: string | number;
+  filterComponentProp: [string, number, number];
 }
 
 const useFilter = ({
@@ -38,7 +27,11 @@ const useFilter = ({
 
   let productsFiltered: Products[] = []; // Define como un array vacío inicialmente
 
-  const [subCategory = "", rating = 0, price = 0] = filterComponentProp || ["", 0, 0];
+  const [subCategory = "", rating = 0, price = 0] = filterComponentProp || [
+    "",
+    0,
+    0,
+  ];
 
   // Filtro según necesidad
   switch (filterBy) {
@@ -95,9 +88,15 @@ const useFilter = ({
         });
       }
       break; // Sale del switch
+
+    case "search":
+      if (typeof filterProp === "string") {
+        productsFiltered = products.filter((product) => {
+          return product.title.toLocaleLowerCase().includes(filterProp.toLocaleLowerCase());
+        });
+      }
   }
 
-  
   // Llamamos al hook siempre con un array
   const productsSubFiltered = useSecondFilter({
     productsFiltered: productsFiltered, // Asegúrate de pasar siempre un array

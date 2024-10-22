@@ -23,7 +23,7 @@ export default function SearchBar() {
 
   const handlerOnSubmit = (e:React.FormEvent) => {
     e.preventDefault()
-router.push(`products/search=${searchText}`);
+router.push(`/products/search/${searchText}`);
   }
 
 
