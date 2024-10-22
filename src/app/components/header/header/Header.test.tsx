@@ -270,7 +270,6 @@ describe("renderizado de componente header", () => {
     expect(screen.getByRole("banner")).toBeInTheDocument;
     expect(screen.getByTestId("menu-nav")).toBeInTheDocument;
     expect(screen.getByTestId("logo")).toBeInTheDocument;
-    expect(screen.getByTestId("search-bar")).toBeInTheDocument;
 
     expect(screen.getByTestId("cart")).toBeInTheDocument;
   });

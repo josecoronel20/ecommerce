@@ -31,6 +31,7 @@ router.push(`/products/search/${searchText}`);
     <div data-testid="search-bar" className="relative">
       <form onSubmit={handlerOnSubmit}>
       <input
+        data-testid="inputSearch"
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         ref={inputRef}
