@@ -3,12 +3,17 @@ import { screen, render } from "@testing-library/react";
 import "@testing-library/react";
 import Header from "./Header";
 import { ContextCart } from "../../../context/ContextCart";
+import { useRouter } from "next/navigation";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
 
 //agrega mockup de contexto ya que al no obtener los productos por el contexto el cart no se renderiza
-const mockAddToCart = jest.fn
-const mockHandlerDelete = jest.fn
-const mockHandlerQuantity = jest.fn
-const mockSetCartItem = jest.fn
+const mockAddToCart = jest.fn();
+const mockHandlerDelete = jest.fn();
+const mockHandlerQuantity = jest.fn();
+const mockSetCartItem = jest.fn();
 
 const mockContextValue = {
   cartItems: [
@@ -253,19 +258,27 @@ const mockContextValue = {
         "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png",
     },
   ],
-  addToCart:mockAddToCart,
-  handlerDelete : mockHandlerDelete,
+  addToCart: mockAddToCart,
+  handlerDelete: mockHandlerDelete,
   handlerQuantity: mockHandlerQuantity,
-  setCartItems:mockSetCartItem,
+  setCartItems: mockSetCartItem,
 };
 
 describe("renderizado de componente header", () => {
+  const mockPush = jest.fn();
+
+  beforeEach(() => {
+    (useRouter as jest.Mock).mockReturnValue({
+      push: mockPush,
+    });
+  });
+
   it("se espera que se rendericen los componentes hijos correctamente", () => {
-    render(<ContextCart.Provider
-      value={mockContextValue}
-    >
-      <Header/>
-    </ContextCart.Provider>);
+    render(
+      <ContextCart.Provider value={mockContextValue}>
+        <Header />
+      </ContextCart.Provider>
+    );
 
     expect(screen.getByRole("banner")).toBeInTheDocument;
     expect(screen.getByTestId("menu-nav")).toBeInTheDocument;

@@ -1,5 +1,6 @@
 import React from "react";
 import { screen, render, fireEvent } from "@testing-library/react";
+import '@testing-library/jest-dom'
 import { useRouter } from "next/navigation";
 import SearchBar from "./SearchBar";
 
@@ -33,7 +34,7 @@ describe("searchBar Component", () => {
     const inputElement = screen.getByTestId("inputSearch");
     fireEvent.change(inputElement, { target: { value: "texto de prueba" } });
 
-    expect(inputElement).toHaveValue("texto de prueba");
+    expect(inputElement).toHaveValue("texto de prueba")
   });
 
   it("llama a router.push a la path correspondiente cuando se hace submit", () => {
