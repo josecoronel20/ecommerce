@@ -61,7 +61,7 @@ export default function CategoryesHome() {
         <CategoryImage
           src={"/ecommerce/images/CategoryPerfume.webp"}
           path={"/products/category/fragrances"}
-          title={"Perfume"}
+          title={"Perfumes"}
         />
         <CategoryImage
           src={"/ecommerce/images/CategoryMan.webp"}
@@ -70,7 +70,7 @@ export default function CategoryesHome() {
         />
 
         <CategoryImage
-          src={"/ecommerce/images/CategoryKid.webp"}
+          src={"/ecommerce/images/CategoryVehicle.jpg"}
           path={"/products/category/vehicle"}
           title={"Vehículos"}
         />

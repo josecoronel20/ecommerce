@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import useFilter from "../hooks/useFilter";
 import Card from "../components/reutilizableComponents/card/Card";
-import FilterComponent from "../components/products/FilterComponent";
+import FilterComponent from "../components/products/filterComponent/FilterComponent";
 
 export default function CategoryPage() {
   //todo:trabajar en paginacion
@@ -38,7 +38,7 @@ export default function CategoryPage() {
           onFiltroChange={handlerFiltroChange}
         />
       </div>
-      <section className="flex flex-wrap justify-center items-center gap-8 ">
+      <section className="flex flex-wrap justify-center gap-8 items-stretch ">
         {productsFiltered.map((product) => {
           return <Card key={product.id} product={product} />;
         })}

@@ -10,13 +10,18 @@ interface CardProps {
 }
 
 export default function Card({ product }: CardProps) {
-
-  const urlDetail = useUrlDetail({category:product.category , id:product.id})
+  const urlDetail = useUrlDetail({
+    category: product.category,
+    id: product.id,
+  });
 
   return (
-    <div className="min-w-40 max-w-40 p-1 gap-1 flex flex-col cardSnap">
-      <Link href={`/products/category/${urlDetail}`} className="flex flex-col gap-1">
-        <div className="relative min-h-40 w-full bg-colorLight2 rounded-lg overflow-hidden">
+    <div className=" min-w-40 max-w-40 p-1 gap-1 flex flex-col cardSnap justify-between">
+      <Link
+        href={`/products/category/${urlDetail}`}
+        className="flex flex-col gap-1"
+      >
+        <div className="relative min-h-40  w-full bg-colorLight2 rounded-lg overflow-hidden">
           <Image
             src={product.images[0]}
             alt={product.title}

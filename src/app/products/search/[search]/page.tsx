@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import useFilter from "../../../hooks/useFilter";
-import FilterComponent from "../../../components/products/FilterComponent";
+import FilterComponent from "../../../components/products/filterComponent/FilterComponent";
 import Card from "../../../components/reutilizableComponents/card/Card";
 
 export default function CategoryPage() {
