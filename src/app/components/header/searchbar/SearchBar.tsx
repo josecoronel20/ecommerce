@@ -21,23 +21,23 @@ export default function SearchBar() {
     setSearchText(e.target.value);
   };
 
-  const handlerOnSubmit = (e:React.FormEvent) => {
-    e.preventDefault()
-router.push(`/products/search/${searchText}`);
-  }
-
+  const handlerOnSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    router.push(`/products/search/${searchText}`);
+  };
 
   return (
     <div data-testid="search-bar" className="relative">
       <form onSubmit={handlerOnSubmit}>
-      <input
-        data-testid="inputSearch"
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        ref={inputRef}
-        className={` w-full rounded`}
-        onChange={handlerSearchText}
-      /></form>
+        <input
+          data-testid="inputSearch"
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          ref={inputRef}
+          className={` w-full rounded`}
+          onChange={handlerSearchText}
+        />
+      </form>
       {!isFocus && (
         <button
           onClick={() => focusInput()}
