@@ -41,10 +41,10 @@ export default function Cart() {
 
       {isToggleOpen === true && (
         <section
-          className={`absolute z-30 flex justify-center  items-center left-0 top-0 w-full h-screen bg-colorDark1 bg-opacity-5 backdrop-blur-sm
+          className={`absolute z-30 flex justify-center  items-center left-0 top-0 w-full h-screen bg-colorDark1 bg-opacity-5 backdrop-blur-sm 
         px-5 pb-5 pt-10`}
         >
-          <div className="bg-white w-fit h-full rounded-md shadow-custom shadow-colorLight3">
+          <div className="bg-white w-fit h-full rounded-md shadow-custom shadow-colorLight3 overflow-y-scroll">
             <div className="p-1 bg-colorLight2">
               <h2 className="font-medium">Carrito</h2>
             </div>
@@ -57,7 +57,7 @@ export default function Cart() {
               </header>
 
               <div className="flex flex-col justify-between h-full">
-                <div className="p-1 h-full">
+                <div className="p-1 h-full overflow-hidden">
                   {cartItems.map((item) => {
                     return (
                       <div

@@ -6,6 +6,7 @@ import ImagesDetail from "../../../../components/productsDetail/ImagesDetail";
 import { useFilterSingle } from "../../../../hooks/useFilterSingle";
 import Stars from "../../../../components/reutilizableComponents/stars/Stars";
 import AddToCart from "../../../../components/reutilizableComponents/addToCart/AddToCart";
+import { PercentBadgeIcon } from "@heroicons/react/24/solid";
 
 export default function ProductDetail() {
   const pathName = usePathname();
@@ -22,6 +23,23 @@ export default function ProductDetail() {
   if (!productsFiltered) {
     return null;
   }
+
+  const price =
+    productsFiltered.discountPercentage < 15 ? (
+      <h2 className="text-3xl font-semibold">${productsFiltered.price}</h2>
+    ) : (
+      <div>
+        <p className="text-colorLight3 font-semibold line-through text-xl">$
+          {Math.round((productsFiltered.price * productsFiltered.discountPercentage) /
+            100 +
+            productsFiltered.price)}
+        </p>
+        <h2 className="text-2xl font-semibold">
+          AHORA ${productsFiltered.price}
+        </h2>
+      </div>
+    );
+
   return (
     <div className="flex min-h-screen mt-11 p-2 flex-col gap-2 text-colorDark1">
       <ImagesDetail productFiltered={productsFiltered} />
@@ -33,7 +51,19 @@ export default function ProductDetail() {
 
         <h1 className="text-xl font-semibold">{productsFiltered.title}</h1>
 
-        <h2 className="text-3xl font-semibold">${productsFiltered.price}</h2>
+        <div className="flex justify-between">
+
+          {price}
+
+          {productsFiltered.discountPercentage > 15 && (
+            <div className="flex gap-1 items-center justify-center">
+              <PercentBadgeIcon className="size-6 text-colorLight3" />
+              <p className="text-sm text-colorLight3">
+                {productsFiltered.discountPercentage}% OFF
+              </p>
+            </div>
+          )}
+        </div>
 
         <div
           className="flex gap-1" //rating

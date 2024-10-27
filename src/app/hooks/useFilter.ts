@@ -12,7 +12,9 @@ interface UseFilterProp {
     | "id"
     | "rating"
     | "price"
-    | "search";
+    | "search"
+    | "offer";
+
   filterProp: string | number;
   filterComponentProp: [string, number, number];
 }
@@ -92,9 +94,18 @@ const useFilter = ({
     case "search":
       if (typeof filterProp === "string") {
         productsFiltered = products.filter((product) => {
-          return product.title.toLocaleLowerCase().includes(filterProp.toLocaleLowerCase());
+          return product.title
+            .toLocaleLowerCase()
+            .includes(filterProp.toLocaleLowerCase());
         });
       }
+
+      case "offer":
+        if (typeof filterProp === "number") {
+          productsFiltered = products.filter((product) => {
+            return product.discountPercentage > filterProp;
+          });
+        }
   }
 
   // Llamamos al hook siempre con un array

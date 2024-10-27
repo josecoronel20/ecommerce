@@ -58,6 +58,8 @@ export default function FilterComponent({
               isInitialMount={isInitialMount}
               products={products}
               setPrice={SetPrice}
+              isToggleOpen={isToggleOpen}
+              rating={rating}
             />
           </div>
         </section>

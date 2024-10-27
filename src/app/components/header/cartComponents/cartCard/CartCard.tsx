@@ -7,6 +7,7 @@ import {
   HandlerDeleteParams,
   HandlerQuantityParams,
 } from "../../../../utils/types";
+import Image from "next/image";
 
 export default function CartCard({
   item,
@@ -22,11 +23,15 @@ export default function CartCard({
   return (
     <>
       <div className="grid grid-cols-2 gap-1 col-span-2">
-        <img
-          className="bg-colorLight2 rounded"
-          src={item.images[0]}
-          alt={`img de ${item.title}`}
-        />
+        <div className="relative bg-colorLight2 rounded-lg overflow-hidden">
+          <Image
+            src={item.images[0]}
+            alt={`img de ${item.title}`}
+            fill
+            className="p-1 object-contain"
+          />
+        </div>
+
         <h3 className="text-xs">{item.title}</h3>
       </div>
       <div className="flex flex-col gap-1 justify-start items-center">

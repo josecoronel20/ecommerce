@@ -19,7 +19,7 @@ export default function CategoryPage() {
       break;
 
     case "fragrances":
-      title = "Perfumes";
+      title = "Perfumes (NUEVA COLECCIÓN)";
       break;
 
     case "mens":

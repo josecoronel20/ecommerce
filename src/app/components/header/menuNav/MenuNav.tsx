@@ -17,7 +17,7 @@ export default function MenuNav() {
   //componetizacion de li
   const Li: React.FC<LiProps> = ({ title, url }) => {
     return (
-      <li className={`${hoverPointer}`} onClick={handlerToggle}>
+      <li className={`${hoverPointer} text-colorLight2 drop-shadow-xl`} onClick={handlerToggle}>
         <Link href={url}>{title}</Link>
       </li>
     );
@@ -37,16 +37,15 @@ export default function MenuNav() {
         <nav
           className={`${isToggleOpen === false ? "-translate-y-full" : ""} 
             
-          absolute backdrop-blur-sm bg-colorDark1 bg-opacity-10 z-30 h-screen w-full top-0 left-0 transition-transform ease-in-out duration-150 pt-6
+          absolute backdrop-blur-sm bg-colorDark1 bg-opacity-70 z-30 h-screen w-full top-0 left-0 transition-transform ease-in-out duration-150 pt-6
 
             `}
         >
           <ul className="w-full h-full flex flex-col items-center gap-5 justify-center">
             <Li url={"/"} title={"Inicio"} />
             <Li url={"/products"} title={"Productos"} />
-            <Li url={"/contact"} title={"Contacto"} />
             <Li url={"/products/offer"} title={"Ofertas"} />
-            <Li url={"/products/fragrances"} title={"Nueva Colección"} />
+            <Li url={"/products/category/fragrances"} title={"Nueva Colección"} />
           </ul>
         </nav>
       </div>

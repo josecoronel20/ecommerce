@@ -5,12 +5,16 @@ interface PriceProps {
   setPrice: React.Dispatch<React.SetStateAction<number>>;
   isInitialMount: React.MutableRefObject<boolean>;
   products: Products[];
+  isToggleOpen:boolean
+  rating:number
 }
 
 const PriceSection: React.FC<PriceProps> = ({
   setPrice,
   products,
   isInitialMount,
+  isToggleOpen,
+  rating
 }) => {
   // Estado para el valor del rango
   const [rangeValue, setRangeValue] = useState<number>(0);
@@ -36,7 +40,7 @@ const PriceSection: React.FC<PriceProps> = ({
 
       isInitialMount.current = false; // Marcar que ya se ha hecho la primera inicialización
     }
-  }, [products]);
+  }, [products,isToggleOpen,rating]);
 
   const handlerRangeValue = (event: React.ChangeEvent<HTMLInputElement>) => {
     const rangeTipe = parseFloat(event.target.value);

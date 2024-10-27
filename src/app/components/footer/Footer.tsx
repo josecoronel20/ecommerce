@@ -23,10 +23,9 @@ export default function Footer() {
         <ul className=" flex flex-col gap-1">
           <li role='li' className="text-lg font-medium">Navegación rápida</li>
           <Li url={"/"} title={"Inicio"} />
-          <Li url={"/products"} title={"Productos"} />
-          <Li url={"/contact"} title={"Contacto"} />
-          <Li url={"/products/offer"} title={"Ofertas"} />
-          <Li url={"/products/fragrances"} title={"Nueva Colección"} />
+            <Li url={"/products"} title={"Productos"} />
+            <Li url={"/products/offer"} title={"Ofertas"} />
+            <Li url={"/products/category/fragrances"} title={"Nueva Colección"} />
         </ul>
       </nav>
     </section>

@@ -33,10 +33,6 @@ export default function OrderConfirmation() {
       className="mt-11 p-2
     "
     >
-      <section>
-        <CardCheckout />
-      </section>
-
       <section className="flex flex-col gap-2 text-colorDark1">
         <h1 className="text-3xl font-semibold">Gracias por su compra!</h1>
         <h2>

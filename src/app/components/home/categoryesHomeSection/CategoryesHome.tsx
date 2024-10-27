@@ -15,7 +15,7 @@ export default function CategoryesHome() {
     return (
       <div
         className={`relative h-40 ${
-          title === "Perfume" ? "col-span-2" : ""
+          title === "Perfumes" ? "col-span-2" : ""
         } ${hoverPointer} `}
       >
         <Link href={path}>

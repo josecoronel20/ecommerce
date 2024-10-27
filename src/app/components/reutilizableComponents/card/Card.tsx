@@ -4,6 +4,7 @@ import { Products } from "../../../utils/types";
 import Link from "next/link";
 import AddToCart from "../addToCart/AddToCart";
 import { useUrlDetail } from "../../../hooks/useUrlDetail";
+import { PercentBadgeIcon } from "@heroicons/react/24/solid";
 
 interface CardProps {
   product: Products;
@@ -30,7 +31,12 @@ export default function Card({ product }: CardProps) {
           />
         </div>
         <h3 className="h-full">{product.title}</h3>
-        <p className="text-colorDark2">${product.price}</p>
+        <div className="flex justify-between items-center">
+          <p className="text-colorDark2">${product.price}</p>
+          {product.discountPercentage > 15 && (
+            <PercentBadgeIcon className="size-5 text-colorDark2" />
+          )}
+        </div>
       </Link>
 
       <AddToCart productId={product.id} />

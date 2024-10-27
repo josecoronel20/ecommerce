@@ -35,7 +35,7 @@ export default function Hero() {
         <button
           className={`${styleButtonWhite} ${hoverPointer} text-sm font-medium`}
         >
-          <Link href='/products/newColecction'>EXPLORA LA COLECCIÓN</Link>
+          <Link href='/products/category/fragrances'>EXPLORA LA COLECCIÓN</Link>
         </button>
       </section>
     </section>
