@@ -1,11 +1,11 @@
 import { StarIcon } from "@heroicons/react/24/solid";
 import React, { useState } from "react";
 
-interface RatingProps{
-  setRating: React.Dispatch<React.SetStateAction<number>>
+interface RatingProps {
+  setRating: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const RatingSection:React.FC<RatingProps> = ({setRating}) => {
+const RatingSection: React.FC<RatingProps> = ({ setRating }) => {
   // Manejo del rating (estrellas)
   const [starsYellow, setStarsYellow] = useState<number[]>([]);
   const starsGrey = Array(5 - starsYellow.length).fill(0);
@@ -20,6 +20,7 @@ const RatingSection:React.FC<RatingProps> = ({setRating}) => {
       <div className="flex gap-1">
         {starsYellow.map((_, index) => (
           <StarIcon
+            data-testid="star"
             onClick={() => handlerRating(index + 1)}
             key={index}
             className="size-6 cursor-pointer text-yellow-300"
@@ -28,6 +29,7 @@ const RatingSection:React.FC<RatingProps> = ({setRating}) => {
 
         {starsGrey.map((_, index) => (
           <StarIcon
+            data-testid="star"
             onClick={() => handlerRating(index + starsYellow.length + 1)}
             key={index + starsYellow.length}
             className="size-6 cursor-pointer text-colorDark2"

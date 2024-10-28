@@ -1,21 +1,19 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import { Products } from "../../utils/types";
 
 interface ProductFilteredProps {
-  productFiltered: {
-    images: Array<string>;
-    title: string;
-  };
+  productFiltered: Products;
 }
 
 export default function ImagesDetail({
   productFiltered,
 }: ProductFilteredProps) {
-const [imageSelected, setImageSelected] = useState<number>(0)
+  const [imageSelected, setImageSelected] = useState<number>(0);
 
-const handlerImageSelected = (index:number) => {
-setImageSelected(index)
-}
+  const handlerImageSelected = (index: number) => {
+    setImageSelected(index);
+  };
 
   return (
     <section
@@ -33,7 +31,7 @@ setImageSelected(index)
         {productFiltered.images.map((image: string, index) => {
           return (
             <div
-            onClick={() => handlerImageSelected(index)}
+              onClick={() => handlerImageSelected(index)}
               key={index}
               className="relative h-24 w-full bg-colorLight2 rounded-lg overflow-hidden cursor-pointer"
             >

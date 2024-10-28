@@ -39,6 +39,8 @@ export default function FilterComponent({
   return (
     <div>
       <AdjustmentsHorizontalIcon
+              data-testid="AdjustmentsHorizontalIcon-icon"
+
         onClick={handlerToggle}
         className="size-6 text-colorDark1 cursor-pointer"
       />

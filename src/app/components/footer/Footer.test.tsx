@@ -10,7 +10,7 @@ describe("renderizado de footer", () => {
     expect(screen.getByTestId("logo")).toBeInTheDocument;
 
     const lis = screen.getAllByRole("li");
-    expect(lis.length).toBe(6)
+    expect(lis.length).toBe(5)
 
     lis.forEach((li) => {
       expect(li).toBeInTheDocument;

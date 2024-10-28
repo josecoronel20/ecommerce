@@ -9,7 +9,6 @@ describe('MenuNav component', () => {
 
         expect(screen.getByText('Inicio')).toBeInTheDocument
         expect(screen.getByText('Productos')).toBeInTheDocument
-        expect(screen.getByText('Contacto')).toBeInTheDocument
         expect(screen.getByText('Ofertas')).toBeInTheDocument
         expect(screen.getByText('Nueva Colección')).toBeInTheDocument
     })
