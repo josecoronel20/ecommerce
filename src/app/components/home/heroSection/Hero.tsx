@@ -27,13 +27,13 @@ export default function Hero() {
         }}
         // priority
       />
-      <section className="relative z-10 px-5 w-full h-full flex flex-col text-center gap-5 text-colorLight1 justify-center items-center">
+      <section className="relative z-10 px-5 w-full h-full flex flex-col text-center gap-5 text-colorLight1 justify-center md:items-start max-w-96">
         <h1 className="text-4xl font-semibold">
           Nueva colección de fragancias
         </h1>
         <p>Perfúmes exclusivos para la temporada, elegancia en cada detalle</p>
         <button
-          className={`${styleButtonWhite} ${hoverPointer} text-sm font-medium`}
+          className={`${styleButtonWhite} ${hoverPointer} text-sm font-medium max-w-80`}
         >
           <Link href='/products/category/fragrances'>EXPLORA LA COLECCIÓN</Link>
         </button>
