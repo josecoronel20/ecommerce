@@ -68,6 +68,6 @@ describe('comprueba correcto funcionamiento del componente ImagesDetail', () => 
     render(<ImagesDetail productFiltered={mockProduct}/>)
     })
 
-    const images = screen.getAllByRole('img')
+    const images = screen.getAllByTestId('image')
     expect(images).toBe(1)
 })

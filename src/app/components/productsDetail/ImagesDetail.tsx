@@ -19,7 +19,7 @@ export default function ImagesDetail({
     <section
       className="flex flex-col gap-1" //images section
     >
-      <div className="relative min-h-80 w-full bg-colorLight2 rounded-lg overflow-hidden">
+      <div data-testid='image' className="relative min-h-80 w-full bg-colorLight2 rounded-lg overflow-hidden">
         <Image
           src={productFiltered.images[imageSelected]}
           alt={productFiltered.title}
