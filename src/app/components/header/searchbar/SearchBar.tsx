@@ -34,7 +34,7 @@ export default function SearchBar() {
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           ref={inputRef}
-          className={` w-full rounded`}
+          className={` w-full rounded md:bg-colorLight2`}
           onChange={handlerSearchText}
         />
       </form>
