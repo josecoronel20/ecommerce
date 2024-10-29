@@ -41,7 +41,7 @@ export default function Carousel() {
   };
 
   return (
-    <section className="py-3 px-1">
+    <section className="py-3 px-1 max-w-xl m-auto">
       <div className="flex justify-between">
         <h2 className="text-xl ">Productos destacados</h2>
         <Link
