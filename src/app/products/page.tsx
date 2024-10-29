@@ -38,7 +38,7 @@ export default function CategoryPage() {
           onFiltroChange={handlerFiltroChange}
         />
       </div>
-      <section className="flex flex-wrap justify-center gap-8 items-stretch ">
+      <section className="flex flex-wrap justify-center gap-8 items-stretch max-w-5xl m-auto">
         {productsFiltered.map((product) => {
           return <Card key={product.id} product={product} />;
         })}

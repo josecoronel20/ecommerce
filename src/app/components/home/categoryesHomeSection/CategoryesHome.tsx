@@ -45,7 +45,7 @@ export default function CategoryesHome() {
   };
 
   return (
-    <section className="py-3 px-1">
+    <section className="py-3 px-1  max-w-5xl m-auto">
       <h2 className="text-xl">Categorías</h2>
       <div className="grid grid-cols-2">
         <CategoryImage

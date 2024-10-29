@@ -14,7 +14,7 @@ export default function Carousel() {
 
   const productsFiltered = useFilter({
     filterBy: "categoryGeneral",
-    filterProp: "fragrances",
+    filterProp: "mens",
     filterComponentProp: ["",0,0],
   });
   if(!productsFiltered){
@@ -41,7 +41,7 @@ export default function Carousel() {
   };
 
   return (
-    <section className="py-3 px-1 max-w-xl m-auto">
+    <section className="py-3 px-1 max-w-4xl m-auto">
       <div className="flex justify-between">
         <h2 className="text-xl ">Productos destacados</h2>
         <Link

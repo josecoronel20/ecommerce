@@ -33,7 +33,7 @@ export default function CategoryPage() {
       <div className="flex justify-between">
         <h1 className="text-xl font-semibold">Productos en oferta (mayor a 15%)</h1>
       </div>
-      <section className="flex flex-wrap justify-center gap-8 items-stretch ">
+      <section className="flex flex-wrap justify-center gap-8 items-stretch max-w-5xl m-auto">
         {productsFiltered.map((product) => {
           return <Card key={product.id} product={product} />;
         })}
