@@ -36,7 +36,8 @@ export default function Cart() {
         //datatestid
         data-testid="cart"
       >
-        <ShoppingBagIcon className="size-6 text-colorDark1" />
+        <ShoppingBagIcon className="size-6 text-colorDark1 m-1" />
+        {cartItems.length > 0 && <span className="absolute top-0 right-0 text-xs bg-red-600 text-colorLight1 px-1 rounded-full">{cartItems.length}</span>}
       </button>
 
       {isToggleOpen === true && (
