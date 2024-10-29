@@ -50,7 +50,7 @@ export default function CardCheckout() {
   const { cartItems, handlerQuantity, handlerDelete } = context;
 
   return (
-    <section className=" p-4 rounded-md gap-2 bg-colorLight2">
+    <section className="w-md m-auto p-4 rounded-md gap-2 bg-colorLight2">
       <div className="flex flex-col gap-2">
         {cartItems.map((product: CartItems) => (
           <div key={product.id} className="grid grid-cols-6 gap-1">

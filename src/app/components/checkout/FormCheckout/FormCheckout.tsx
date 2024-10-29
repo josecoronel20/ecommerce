@@ -75,10 +75,10 @@ export default function FormCheckout() {
 
   return (
     <form
-      className="border-t border-colorLight2 flex flex-col gap-4 py-1"
+      className="border-t border-colorLight2 flex flex-col gap-4 py-1 items-center"
       onSubmit={handlerForm}
     >
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full max-w-md max-w-md">
         <div className="flex justify-between">
           <label className="font-medium text-colorDark1" htmlFor="email">
             Email
@@ -95,7 +95,7 @@ export default function FormCheckout() {
         />
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full max-w-md">
         <div className="flex justify-between">
           <p className="font-medium text-colorDark1">
             Información de la tarjeta
@@ -133,7 +133,7 @@ export default function FormCheckout() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 w-full max-w-md">
         <label className="font-medium text-colorDark1" htmlFor="cardName">
           Nombre de la tarjeta
         </label>
@@ -146,7 +146,8 @@ export default function FormCheckout() {
           required
         />
       </div>
-      <div className="flex flex-col gap-1">
+
+      <div className="flex flex-col gap-1 w-full max-w-md">
         <p className="font-medium text-colorDark1">Dirección</p>
         <select
           name="countryName"
@@ -173,7 +174,7 @@ export default function FormCheckout() {
           required
         />
       </div>
-      <button className={`${hoverPointer} ${styleButtonBorder}`} type="submit">
+      <button className={`${hoverPointer} ${styleButtonBorder} w-10/12`} type="submit">
         Confirmar el pago
       </button>
     </form>

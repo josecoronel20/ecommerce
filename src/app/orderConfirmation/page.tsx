@@ -30,10 +30,10 @@ export default function OrderConfirmation() {
 
   return (
     <section
-      className="mt-11 p-2
+      className="mt-11 p-2 min-h-screen flex flex-col items-center justify-center
     "
     >
-      <section className="flex flex-col gap-2 text-colorDark1">
+      <section className="flex flex-col gap-2 text-colorDark1 max-w-md">
         <h1 className="text-3xl font-semibold">Gracias por su compra!</h1>
         <h2>
           Su pedido será procesado dentro de las próximas 24 horas hábiles. Una
@@ -61,6 +61,8 @@ export default function OrderConfirmation() {
           </button>
         </div>
       </section>
+      <CardCheckout />
+
     </section>
   );
 }

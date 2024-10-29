@@ -79,7 +79,7 @@ export default function Cart() {
                 <Link
                   onClick={handlerToggle}
                   href="/checkout"
-                  className={`${styleButtonBorder} ${hoverPointer} w-11/12`}
+                  className={`${styleButtonBorder} ${hoverPointer} w-10/12`}
                 >
                   Proceder al pago
                 </Link>
