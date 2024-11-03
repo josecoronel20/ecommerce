@@ -4,8 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true, // Para exportaciones estáticas
   },
-  basePath: "/",
-  assetPrefix: "/",
+  basePath: "",
+  assetPrefix: "",
 };
 
 export default nextConfig;
