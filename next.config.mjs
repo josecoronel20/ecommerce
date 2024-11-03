@@ -1,11 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: "export",
+  output: "export",
   images: {
     unoptimized: true, // Para exportaciones estáticas
   },
-  basePath: "/ecommerce",
-  assetPrefix: "/ecommerce/",
+  basePath: "/",
+  assetPrefix: "/",
 };
 
 export default nextConfig;
