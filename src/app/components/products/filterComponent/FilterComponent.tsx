@@ -46,7 +46,7 @@ export default function FilterComponent({
       />
 
       {isToggleOpen && (
-        <section className="absolute top-20 right-5 w-5/6 h-fit z-20 bg-colorLight1 shadow-md rounded-md overflow-hidden">
+        <section className="absolute top-20 right-5 w-5/6 max-w-72 h-fit z-20 bg-colorLight1 shadow-md rounded-md overflow-hidden">
           <p className="bg-colorLight2 p-2">Filtro</p>
           <div className="flex flex-col gap-2 p-1">
             <CategorySection
