@@ -19,8 +19,12 @@ export default function ImagesDetail({
     <section
       className="flex flex-col gap-1" //images section
     >
-      <div data-testid='image' className="relative min-h-80 w-full bg-colorLight2 rounded-lg overflow-hidden">
+      <div
+        data-testid="image"
+        className="relative min-h-80 w-full bg-colorLight2 rounded-lg overflow-hidden"
+      >
         <Image
+          data-testid="image"
           src={productFiltered.images[imageSelected]}
           alt={productFiltered.title}
           fill
@@ -36,6 +40,7 @@ export default function ImagesDetail({
               className="relative h-24 w-full bg-colorLight2 rounded-lg overflow-hidden cursor-pointer"
             >
               <Image
+                data-testid="image"
                 src={image}
                 alt={productFiltered.title}
                 fill

@@ -69,5 +69,5 @@ describe('comprueba correcto funcionamiento del componente ImagesDetail', () => 
     })
 
     const images = screen.getAllByTestId('image')
-    expect(images).toBe(1)
+    expect(images.length).toBe(2)
 })
